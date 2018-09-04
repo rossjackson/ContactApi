@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ContactApi/v15
+/src/.vs/ContactApi/v15/Server/sqlite3
+/src/**/obj/Debug
+/src/**/obj/Release
+/src/**/bin
+/src/ContactApi.Web.Api/ConnectionString.config
