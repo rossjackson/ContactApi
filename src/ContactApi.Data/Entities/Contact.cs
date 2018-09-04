@@ -26,5 +26,13 @@ namespace ContactApi.Data.Entities
                 return context.Contacts.FirstOrDefault(c => c.ContactId == contactId);
             }
         }
+
+        public static Contact[] GetAll()
+        {
+            using (var context = new ContactApiDb())
+            {
+                return context.Contacts.ToArray();
+            }
+        }
     }
 }

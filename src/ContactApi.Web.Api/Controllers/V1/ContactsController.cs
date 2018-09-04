@@ -11,14 +11,14 @@ namespace ContactApi.Web.Api.Controllers.V1
     [ApiVersion1RoutePrefix("contacts")]
     public class ContactsController : ApiController
     {
-        [Route("getall")]
+        [Route("list")]
         [HttpGet]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage List()
         {
-            var contact = Contact.GetById(new Guid("3F976D52-3D65-43F3-B7A0-3CF0AE26C47B"));
+            var contacts = Contact.GetAll();
             return new HttpResponseMessage
             {
-                Content = new StringContent(JsonConvert.SerializeObject(contact), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonConvert.SerializeObject(contacts), Encoding.UTF8, "application/json")
             };
         }
     }
