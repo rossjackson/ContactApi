@@ -4,8 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using ContactApi.Data;
-using ContactApi.Data.QueryProcessors;
 using ContactApi.Web.Common;
+using ContactApi.Web.Common.Logging;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using log4net.Config;
@@ -27,13 +27,14 @@ namespace ContactApi.Web.Api
         private void AddBindings(IKernel container)
         {
             ConfigureLog4Net(container);
-
-            container.Bind<IUpdateContactQueryProcessor>().To<IUpdateContactQueryProcessor>().InRequestScope();
         }
 
         private void ConfigureLog4Net(IKernel container)
         {
             XmlConfigurator.Configure();
+
+            var logManager = new LogManagerAdapter();
+            container.Bind<ILogManager>().ToConstant(logManager);
         }
     }
 }

@@ -55,7 +55,6 @@
     <Compile Include="Exceptions\RootObjectNotFoundException.cs" />
     <Compile Include="IContactDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryProcessors\IUpdateContactQueryProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using ContactApi.Data.Entities;
-using ContactApi.Web.Common;
 using ContactApi.Web.Common.Routing;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ContactApi.Web.Api.Controllers.V1
 {
