@@ -1,0 +1,5 @@
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\b\ContactApi.Data\bin\Debug\ContactApi.Data.dll.config
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\b\ContactApi.Data\bin\Debug\ContactApi.Data.dll
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Data\Debug\ContactApi.Data.csproj.CoreCompileInputs.cache
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Data\Debug\ContactApi.Data.csproj.CopyComplete
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Data\Debug\ContactApi.Data.dll

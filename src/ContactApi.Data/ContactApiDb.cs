@@ -10,7 +10,7 @@ namespace ContactApi.Data
 {
     public class ContactApiDb : DbContext, IContactDataSource
     {
-        public DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
         IQueryable<Contact> IContactDataSource.Contacts => Contacts;
     }

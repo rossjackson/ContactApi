@@ -8,7 +8,7 @@ using ContactApi.Data.Entities;
 
 namespace ContactApi.Data.Entities
 {
-    public class Contact : IVersionedEntity
+    public class Contact
     {
         public virtual Guid ContactId { get; set; }
         public virtual string FirstName { get; set; }
@@ -16,23 +16,5 @@ namespace ContactApi.Data.Entities
         public virtual string EmailAddress { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual string Status { get; set; }
-
-        public virtual byte[] Version { get; set; }
-
-        public static Contact GetById(Guid contactId)
-        {
-            using (var context = new ContactApiDb())
-            {
-                return context.Contacts.FirstOrDefault(c => c.ContactId == contactId);
-            }
-        }
-
-        public static Contact[] GetAll()
-        {
-            using (var context = new ContactApiDb())
-            {
-                return context.Contacts.ToArray();
-            }
-        }
     }
 }
