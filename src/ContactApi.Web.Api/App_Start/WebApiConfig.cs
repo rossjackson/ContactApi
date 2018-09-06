@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
 using ContactApi.Web.Common;
+using ContactApi.Web.Common.ErrorHandling;
+using ContactApi.Web.Common.Logging;
 using ContactApi.Web.Common.Routing;
 
 namespace ContactApi.Web.Api
@@ -20,6 +19,9 @@ namespace ContactApi.Web.Api
             config.MapHttpAttributeRoutes(constraintsResolver);
 
             config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
+            config.Services.Add(typeof(IExceptionLogger),
+                new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+            config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
         }
     }
 }

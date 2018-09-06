@@ -20,10 +20,6 @@ namespace ContactApi.Web.Api.Tests.Models.V1
         [Test]
         public void ContactModel_empty()
         {
-            var contact1 = MockHelper.NewContact;
-            contact1.FirstName = "samson";
-            var contact2 = MockHelper.NewContact;
-            var contact = contact2;
             var emptyContactModel = new ContactModel();
             Assert.IsFalse(ValidateContactModel(emptyContactModel));
         }

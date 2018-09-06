@@ -36,8 +36,8 @@ namespace ContactApi.Web.Api.Controllers.V1
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var contact = MapContactModelToContactEntity(contactModel);
-
             await _contactService.AddOrUpdateContactAsync(contact);
+
             return Ok();
         }
 

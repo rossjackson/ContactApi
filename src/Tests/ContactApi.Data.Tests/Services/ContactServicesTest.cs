@@ -48,5 +48,15 @@ namespace ContactApi.Data.Tests.Services
             Assert.AreNotEqual(originalContactsCount, updatedContactsCount);
             Assert.That(originalContactsCount + 1 == updatedContactsCount);
         }
+
+        [Test]
+        public void AddContact_duplicate_email()
+        {
+            var contactServiceMock = new Mock<ContactService>();
+            var contacts = MockHelper.ContactTestCollection.ToList();
+
+            Assert.True(contactServiceMock.Object.DuplicateEmail(MockHelper.DuplicateEmail, contacts));
+            Assert.False(contactServiceMock.Object.DuplicateEmail("random@email.com", contacts));
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace ContactApi.Test.Utility
             return dbSet;
         }
 
+        public static string DuplicateEmail = "lex.luther@gmail.com";
+
         public static IQueryable<Contact> ContactTestCollection => new List<Contact>
         {
             new Contact
@@ -39,7 +41,7 @@ namespace ContactApi.Test.Utility
                 ContactId = new Guid("{D7F34E7A-9AEC-474D-906B-626357AAA9A0}"),
                 FirstName = "Bat",
                 LastName = "Luther",
-                EmailAddress = "lex.luther@gmail.com",
+                EmailAddress = DuplicateEmail,
                 PhoneNumber = "321-457-8542",
                 Status = "Inactive"
             },
