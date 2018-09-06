@@ -141,6 +141,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\V1\ContactsModels.cs" />
     <Compile Include="NinjectConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,16 +159,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactApi.Data\ContactApi.Data.csproj">
       <Project>{c7230648-250a-4632-9189-739c9eeafaaf}</Project>
       <Name>ContactApi.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ContactApi.Web.Api.Models\ContactApi.Web.Api.Models.csproj">
-      <Project>{224da057-d9cc-462d-ad2c-e2e5405c01dc}</Project>
-      <Name>ContactApi.Web.Api.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\ContactApi.Web.Common\ContactApi.Web.Common.csproj">
       <Project>{79defc60-4df4-423b-8f19-aff91902d01c}</Project>

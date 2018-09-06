@@ -15,66 +15,38 @@ namespace ContactApi.Data.Tests.Services
     [TestFixture]
     public class ContactServicesTest
     {
-        private IQueryable<Contact> ContactTestQueryableCollection;
-        private Contact NewContact;
-
-        [SetUp]
-        public void SetUp()
-        {
-            ContactTestQueryableCollection = GenerateContactTestCollection();
-            NewContact = new Contact
-            {
-                ContactId = Guid.NewGuid(),
-                FirstName = "John",
-                LastName = "Santos",
-                EmailAddress = "John.Santos@gmail.com",
-                Status = "Active",
-                PhoneNumber = "202-460-0101"
-            };
-        }
-
-        private IQueryable<Contact> GenerateContactTestCollection()
-        {
-            return new List<Contact>
-            {
-                new Contact {FirstName = "Test 1", LastName = "Test 2", EmailAddress = "test@test.com"},
-                new Contact {FirstName = "second", LastName = "test", EmailAddress = "test2@test.com"}
-            }.AsQueryable();
-        }
-        
         [Test]
         public void GetAll_via_context()
         {
-            var mockContactTestCollection = MockHelper.CreateMockDbSet(ContactTestQueryableCollection);
+            var expectedContactsQueryable = MockHelper.ContactTestCollection;
+            var mockContactTestCollection = MockHelper.CreateMockDbSet(expectedContactsQueryable);
 
             var contactServiceMock = new Mock<IContactService>();
-            contactServiceMock.Setup(c => c.GetAll()).Returns(mockContactTestCollection.Object.ToList);
+            contactServiceMock.Setup(c => c.GetAll()).Returns(mockContactTestCollection.Object);
 
-            var contacts = contactServiceMock.Object.GetAll();
+            var actualContacts = contactServiceMock.Object.GetAll().ToList();
+            var expectedContacts = expectedContactsQueryable.ToList();
 
-            Assert.IsTrue(contacts.Count == 2);
-            Assert.That(contacts[0], Is.EqualTo(ContactTestQueryableCollection.ToList()[0]));
-            Assert.AreEqual("Test 1", contacts[0].FirstName);
-            Assert.AreEqual("test2@test.com", contacts[1].EmailAddress);
+            Assert.IsTrue(actualContacts.Count == expectedContacts.Count);
+            CollectionAssert.AreEqual(actualContacts, expectedContacts);
         }
 
         [Test]
         public void AddContact_insert_new_contact()
         {
-            var contacts = ContactTestQueryableCollection.ToList();
+            var contacts = MockHelper.ContactTestCollection.ToList();
             var originalContactsCount = contacts.Count;
 
             var contactServiceMock = new Mock<IContactService>();
-            contactServiceMock.Setup(c => c.AddContact(It.IsAny<Contact>()))
+            contactServiceMock.Setup(c => c.AddOrUpdateContactAsync(It.IsAny<Contact>()))
                 .Callback<Contact>(c => contacts.Add(c));
 
-            contactServiceMock.Object.AddContact(NewContact);
+            contactServiceMock.Object.AddOrUpdateContactAsync(MockHelper.NewContact);
 
             var updatedContactsCount = contacts.Count;
 
             Assert.AreNotEqual(originalContactsCount, updatedContactsCount);
             Assert.That(originalContactsCount + 1 == updatedContactsCount);
-
         }
     }
 }

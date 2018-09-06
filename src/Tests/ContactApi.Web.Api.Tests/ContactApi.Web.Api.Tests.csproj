@@ -73,6 +73,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
@@ -87,6 +88,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\V1\ContactsControllerTest.cs" />
+    <Compile Include="Models\V1\ContactsModelsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,18 +101,16 @@
       <Project>{c7230648-250a-4632-9189-739c9eeafaaf}</Project>
       <Name>ContactApi.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ContactApi.Web.Api.Models\ContactApi.Web.Api.Models.csproj">
-      <Project>{224da057-d9cc-462d-ad2c-e2e5405c01dc}</Project>
-      <Name>ContactApi.Web.Api.Models</Name>
+    <ProjectReference Include="..\..\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj">
+      <Project>{4860F813-747E-4B87-9EDF-908EF32DC48A}</Project>
+      <Name>ContactApi.Test.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ContactApi.Web.Api\ContactApi.Web.Api.csproj">
       <Project>{508b16a5-7e81-46e8-98b5-d58b26905271}</Project>
       <Name>ContactApi.Web.Api</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\V1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\lib\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\lib\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

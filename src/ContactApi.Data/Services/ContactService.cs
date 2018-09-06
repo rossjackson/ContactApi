@@ -10,22 +10,18 @@ namespace ContactApi.Data.Services
 {
     public class ContactService : IContactService
     {
-        private readonly ContactApiDb _context;
+        private readonly ContactApiDb _context = new ContactApiDb();
         
-        public ContactService(ContactApiDb context)
+        public virtual IEnumerable<Contact> GetAll()
         {
-            _context = context;
+            return _context.Contacts;
         }
 
-        public virtual List<Contact> GetAll()
+        public async Task<int> AddOrUpdateContactAsync(Contact newContact)
         {
-            return _context.Contacts.ToList();
+            _context.Contacts.AddOrUpdate(newContact);
+            return await _context.SaveChangesAsync();
         }
 
-        public void AddContact(Contact newContact)
-        {
-            _context.Contacts.Add(newContact);
-            _context.Contacts.AddOrUpdate();
-        }
     }
 }

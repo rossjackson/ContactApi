@@ -68,5 +68,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContactApi.Data\ContactApi.Data.csproj">
+      <Project>{c7230648-250a-4632-9189-739c9eeafaaf}</Project>
+      <Name>ContactApi.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

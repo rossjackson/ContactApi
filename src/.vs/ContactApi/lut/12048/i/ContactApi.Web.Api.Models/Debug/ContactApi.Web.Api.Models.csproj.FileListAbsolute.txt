@@ -1,5 +1,0 @@
-C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\b\ContactApi.Web.Api.Models\bin\Debug\ContactApi.Web.Api.Models.dll
-C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Web.Api.Models\Debug\ContactApi.Web.Api.Models.csprojAssemblyReference.cache
-C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Web.Api.Models\Debug\ContactApi.Web.Api.Models.csproj.CoreCompileInputs.cache
-C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Web.Api.Models\Debug\ContactApi.Web.Api.Models.csproj.CopyComplete
-C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Web.Api.Models\Debug\ContactApi.Web.Api.Models.dll

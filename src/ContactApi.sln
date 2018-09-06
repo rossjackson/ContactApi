@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Data", "ContactApi.Data\ContactApi.Data.csproj", "{C7230648-250A-4632-9189-739C9EEAFAAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Web.Api.Models", "ContactApi.Web.Api.Models\ContactApi.Web.Api.Models.csproj", "{224DA057-D9CC-462D-AD2C-E2E5405C01DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Web.Common", "ContactApi.Web.Common\ContactApi.Web.Common.csproj", "{79DEFC60-4DF4-423B-8F19-AFF91902D01C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91D5C422-1FFC-4942-B1B5-9C6873FDD343}"
@@ -15,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Data.SqlServer.IntegrationTests", "Tests\ContactApi.Data.SqlServer.IntegrationTests\ContactApi.Data.SqlServer.IntegrationTests.csproj", "{DD723392-EBC3-403C-BDBF-2718AA9EC90A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Data.Tests", "Tests\ContactApi.Data.Tests\ContactApi.Data.Tests.csproj", "{130C7893-300C-46E2-A662-36F98B403EA4}"
 EndProject
@@ -40,18 +36,10 @@ Global
 		{C7230648-250A-4632-9189-739C9EEAFAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7230648-250A-4632-9189-739C9EEAFAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7230648-250A-4632-9189-739C9EEAFAAF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{224DA057-D9CC-462D-AD2C-E2E5405C01DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{224DA057-D9CC-462D-AD2C-E2E5405C01DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{224DA057-D9CC-462D-AD2C-E2E5405C01DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{224DA057-D9CC-462D-AD2C-E2E5405C01DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79DEFC60-4DF4-423B-8F19-AFF91902D01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79DEFC60-4DF4-423B-8F19-AFF91902D01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79DEFC60-4DF4-423B-8F19-AFF91902D01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79DEFC60-4DF4-423B-8F19-AFF91902D01C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD723392-EBC3-403C-BDBF-2718AA9EC90A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD723392-EBC3-403C-BDBF-2718AA9EC90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD723392-EBC3-403C-BDBF-2718AA9EC90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD723392-EBC3-403C-BDBF-2718AA9EC90A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{130C7893-300C-46E2-A662-36F98B403EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{130C7893-300C-46E2-A662-36F98B403EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{130C7893-300C-46E2-A662-36F98B403EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,7 +69,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DD723392-EBC3-403C-BDBF-2718AA9EC90A} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 		{130C7893-300C-46E2-A662-36F98B403EA4} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 		{CA6B71B3-B2AB-43D2-9192-C0B40BFE5FCE} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 		{002C5E09-D15B-4924-8B98-205D6E85B706} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}

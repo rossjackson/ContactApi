@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using ContactApi.Data;
+using ContactApi.Data.Services;
 using ContactApi.Web.Common;
 using ContactApi.Web.Common.Logging;
 using FluentNHibernate.Cfg;
@@ -27,6 +28,7 @@ namespace ContactApi.Web.Api
         private void AddBindings(IKernel container)
         {
             ConfigureLog4Net(container);
+            ConfigureContactsController(container);
         }
 
         private void ConfigureLog4Net(IKernel container)
@@ -35,6 +37,11 @@ namespace ContactApi.Web.Api
 
             var logManager = new LogManagerAdapter();
             container.Bind<ILogManager>().ToConstant(logManager);
+        }
+
+        private void ConfigureContactsController(IKernel container)
+        {
+            container.Bind<IContactService>().To<ContactService>().InSingletonScope();
         }
     }
 }
