@@ -55,6 +55,7 @@
     <Compile Include="IContactDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\IContactService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

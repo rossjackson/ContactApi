@@ -1,0 +1,6 @@
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\b\ContactApi.Test.Utility\bin\Debug\ContactApi.Test.Utility.dll
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Test.Utility\Debug\ContactApi.Test.Utility.csproj.CoreCompileInputs.cache
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Test.Utility\Debug\ContactApi.Test.Utility.csproj.CopyComplete
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Test.Utility\Debug\ContactApi.Test.Utility.dll
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\b\ContactApi.Test.Utility\bin\Debug\ContactApi.Test.Utility.dll.config
+C:\Users\rosss\Source\Repos\ContactApi\src\.vs\ContactApi\lut\0\i\ContactApi.Test.Utility\Debug\ContactApi.Test.Utility.csprojAssemblyReference.cache

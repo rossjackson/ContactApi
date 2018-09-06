@@ -19,6 +19,7 @@ namespace ContactApi.Web.Api.Controllers.V1
         {
             var contactService = new ContactService(new ContactApiDb());
             var contacts = contactService.GetAll();
+
             return new HttpResponseMessage
             {
                 Content = new StringContent(JsonConvert.SerializeObject(contacts), Encoding.UTF8, "application/json")
