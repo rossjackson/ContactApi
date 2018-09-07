@@ -99,7 +99,7 @@ namespace ContactApi.Web.Common
 
         private string GetControllerName(IHttpRouteData routeData)
         {
-            var subroute = routeData.GetSubRoutes().FirstOrDefault();
+            var subroute = routeData.GetSubRoutes()?.FirstOrDefault();
 
             var dataTokenValue = subroute?.Route.DataTokens.First().Value;
             if (dataTokenValue == null) return null;

@@ -10,6 +10,7 @@ namespace ContactApi.Data.Services
     public interface IContactService
     {
         IEnumerable<Contact> GetAll();
-        Task<bool> AddOrUpdateContactAsync(Contact newContact);
+        Task<bool> AddContactAsync(Contact newContact);
+        Task<bool> EditContactAsync(Contact updatedContact);
     }
 }

@@ -17,20 +17,6 @@ namespace ContactApi.Web.Common.ErrorHandling
                 return;
             }
 
-            if (exception is RootObjectNotFoundException)
-            {
-                context.Result = new SimpleErrorResult(context.Request, HttpStatusCode.NotFound,
-                    exception.Message);
-                return;
-            }
-
-            if (exception is ChildObjectNotFoundException)
-            {
-                context.Result = new SimpleErrorResult(context.Request, HttpStatusCode.Conflict,
-                    exception.Message);
-                return;
-            }
-
             if (exception is ContactDataUpdateException)
             {
                 context.Result = new SimpleErrorResult(context.Request, HttpStatusCode.BadRequest,

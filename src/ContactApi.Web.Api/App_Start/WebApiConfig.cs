@@ -22,6 +22,12 @@ namespace ContactApi.Web.Api
             config.Services.Add(typeof(IExceptionLogger),
                 new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
             config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
+
+            config.Routes.MapHttpRoute(
+                name: "ResourceNotFound",
+                routeTemplate: "{*uri}",
+                defaults: new { controller = "Default", uri = RouteParameter.Optional }
+            );
         }
     }
 }

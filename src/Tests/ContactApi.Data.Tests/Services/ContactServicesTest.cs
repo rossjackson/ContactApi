@@ -32,16 +32,16 @@ namespace ContactApi.Data.Tests.Services
         }
 
         [Test]
-        public void AddOrUpdateContactAsync_insert_contact()
+        public void AddContactAsync()
         {
             var contacts = MockHelper.ContactTestCollection.ToList();
             var originalContactsCount = contacts.Count;
 
             var contactServiceMock = new Mock<IContactService>();
-            contactServiceMock.Setup(c => c.AddOrUpdateContactAsync(It.IsAny<Contact>()))
+            contactServiceMock.Setup(c => c.AddContactAsync(It.IsAny<Contact>()))
                 .Callback<Contact>(c => contacts.Add(c));
 
-            contactServiceMock.Object.AddOrUpdateContactAsync(MockHelper.NewContact);
+            contactServiceMock.Object.AddContactAsync(MockHelper.NewContact);
 
             var updatedContactsCount = contacts.Count;
 
@@ -50,46 +50,89 @@ namespace ContactApi.Data.Tests.Services
         }
 
         [Test]
-        public void AddOrUpdateContactAsync_update_contact()
+        public void EditContactAsync()
         {
             var contacts = MockHelper.ContactTestCollection.ToList();
-            var originalContactsCount = contacts.Count;
-            var originalContactToUpdate = contacts.FirstOrDefault(c => c.ContactId == MockHelper.ContactIdToUpdate);
-
-            var contactToUpdateData = new Contact
+            var contactDataForUpdate = new Contact
             {
                 ContactId = MockHelper.ContactIdToUpdate,
-                FirstName = "Peter",
-                LastName = "Parker",
-                EmailAddress = "peter.parker@gmail.com"
+                FirstName = "The",
+                LastName = "Drake",
+                EmailAddress = "tim.drake@gmail.com",
+                PhoneNumber = "713-989-8542",
+                Status = "Active"
             };
 
+            var originalContactsCount = contacts.Count;
+            var originalContact = contacts.FirstOrDefault(c => c.ContactId == contactDataForUpdate.ContactId);
+            
             var contactServiceMock = new Mock<IContactService>();
-            contactServiceMock.Setup(c => c.AddOrUpdateContactAsync(It.IsAny<Contact>()))
-                .Callback<Contact>(c =>
-                {
-                    var contactToAddOrUpdate = contacts.FirstOrDefault(contact => contact.ContactId == c.ContactId);
-                    var contactToUpdateIndex = contacts.IndexOf(contactToAddOrUpdate);
-                    contacts[contactToUpdateIndex] = c;
-                });
+            contactServiceMock.Setup(c => c.EditContactAsync(It.IsAny<Contact>())).Callback<Contact>(c =>
+            {
+                var contactToUpdateIndex = contacts.FindIndex(thisContact => thisContact.ContactId == c.ContactId);
+                contacts[contactToUpdateIndex] = c;
+            });
 
-            contactServiceMock.Object.AddOrUpdateContactAsync(contactToUpdateData);
-            var updatedContactsCount = contacts.Count;
-            var updatedContact = contacts.FirstOrDefault(c => c.ContactId == contactToUpdateData.ContactId);
+            contactServiceMock.Object.EditContactAsync(contactDataForUpdate);
 
-            Assert.That(originalContactsCount == updatedContactsCount);
-            Assert.AreNotEqual(originalContactToUpdate, updatedContact);
-            Assert.AreEqual(contactToUpdateData, updatedContact);
+            var updatedContact = contacts.FirstOrDefault(c => c.ContactId == contactDataForUpdate.ContactId);
+
+            Assert.IsTrue(contacts.Count == originalContactsCount);
+            Assert.AreNotEqual(originalContact, updatedContact);
+        }
+
+        [TestCase("{6D3741D2-9E21-42AC-AC7F-B471C77FDB1E}", ExpectedResult = null, TestName = "GetContact_unknown_contact")]
+        [TestCase("{78B15191-98D8-4250-9B5A-5DD52BCE71F2}", ExpectedResult = "batman@gmail.com", TestName = "GetContact_known_contact")]
+        public string GetContact(string strContactId)
+        {
+            var contacts = MockHelper.ContactTestCollection.ToList();
+            var contactToUpdateData = new Contact
+            {
+                ContactId = new Guid(strContactId)
+            };
+
+            var contactServiceMock = new Mock<ContactService>();
+
+            var actualContact = contactServiceMock.Object.GetContact(contacts, contactToUpdateData);
+            return actualContact?.EmailAddress;
+        }
+        
+        [Test]
+        public void DuplicateEmail()
+        {
+            var contacts = MockHelper.ContactTestCollection.ToList();
+            var newContactWithDuplicateEmail = new Contact
+            {
+                ContactId = Guid.NewGuid(),
+                EmailAddress = MockHelper.DuplicateEmail
+            };
+
+            var newContactWithUniqueEmail = new Contact
+            {
+                ContactId = Guid.NewGuid(),
+                EmailAddress = "random@email.com"
+            };
+
+            var contactServiceMock = new Mock<ContactService>();
+
+            Assert.True(contactServiceMock.Object.DuplicateEmail(newContactWithDuplicateEmail.ContactId,
+                newContactWithDuplicateEmail.EmailAddress, contacts));
+            Assert.False(contactServiceMock.Object.DuplicateEmail(newContactWithUniqueEmail.ContactId,
+                newContactWithUniqueEmail.EmailAddress, contacts));
         }
 
         [Test]
-        public void AddOrUpdateContactAsync_duplicate_email()
+        public void MaintainContactStatusOnEdit()
         {
-            var contactServiceMock = new Mock<ContactService>();
-            var contacts = MockHelper.ContactTestCollection.ToList();
+            var originalContact = new Contact { Status = "Active" };
+            var updatedContact = new Contact();
 
-            Assert.True(contactServiceMock.Object.DuplicateEmail(MockHelper.DuplicateEmail, contacts));
-            Assert.False(contactServiceMock.Object.DuplicateEmail("random@email.com", contacts));
+            Assert.True(updatedContact.Status == null);
+            
+            var contactServiceMock = new Mock<ContactService>();
+            contactServiceMock.Object.MaintainContactStatusOnEdit(originalContact, updatedContact);
+
+            Assert.AreEqual(originalContact.Status, updatedContact.Status);
         }
     }
 }

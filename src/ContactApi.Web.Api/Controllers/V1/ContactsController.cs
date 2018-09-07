@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using Newtonsoft.Json;
 namespace ContactApi.Web.Api.Controllers.V1
 {
     [ApiVersion1RoutePrefix("contacts")]
-    public class ContactsController : ApiController
+    public class ContactsController : WebApiControllerBase
     {
         private readonly IContactService _contactService;
 
@@ -32,26 +33,43 @@ namespace ContactApi.Web.Api.Controllers.V1
 
         [Route("add")]
         [HttpPost]
-        public async Task<IHttpActionResult> AddContact([FromBody]ContactModel contactModel)
+        public async Task<IHttpActionResult> AddContactAsync([FromBody]ContactModel contactModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var contact = MapContactModelToContactEntity(contactModel);
-            await _contactService.AddOrUpdateContactAsync(contact);
+            var contact = MapContactModelToContactEntity(contactModel, status: "Inactive");
+            await _contactService.AddContactAsync(contact);
 
             return Created(Request?.RequestUri.ToString() ?? "/", contact);
         }
 
-        private Contact MapContactModelToContactEntity(ContactModel contactModel)
+        [Route("edit")]
+        [HttpPut]
+        public async Task<IHttpActionResult> EditContactAsync([FromUri]Guid contactId, [FromBody]ContactModel contactModel)
+        {
+            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
+
+            if (contactModel == null) return BadRequest("Please use delete to remove the contact.");
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var contact = MapContactModelToContactEntity(contactModel, contactId);
+            await _contactService.EditContactAsync(contact);
+
+            return ResponseMessage(new HttpResponseMessage(HttpStatusCode.NoContent));
+        }
+
+        private Contact MapContactModelToContactEntity(ContactModel contactModel, Guid contactId = default(Guid),
+            string status = default(string))
         {
             return new Contact
             {
-                ContactId = Guid.NewGuid(),
+                ContactId = contactId == Guid.Empty ? Guid.NewGuid() : contactId,
                 FirstName = contactModel.FirstName,
                 LastName = contactModel.LastName,
                 EmailAddress = contactModel.EmailAddress,
                 PhoneNumber = contactModel.PhoneNumber,
-                Status = "Inactive"
+                Status = status
             };
         }
     }

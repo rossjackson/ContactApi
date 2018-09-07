@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Results;
 using System.Web.ModelBinding;
@@ -18,13 +21,12 @@ namespace ContactApi.Web.Api.Tests.Controllers.V1
     [TestFixture]
     public class ContactsControllerTest
     {
-        private readonly Mock<IContactService> _mockContactService;
         private readonly ContactsController _contactsController;
 
         public ContactsControllerTest()
         {
-            _mockContactService = new Mock<IContactService>();
-            _contactsController = new ContactsController(_mockContactService.Object);
+            var mockContactService = new Mock<IContactService>();
+            _contactsController = new ContactsController(mockContactService.Object);
         }
 
         [Test]
@@ -39,8 +41,29 @@ namespace ContactApi.Web.Api.Tests.Controllers.V1
         [Test]
         public async Task AddContactAsync()
         {
-            var actionResult = await _contactsController.AddContact(new ContactModel());
+            var actionResult = await _contactsController.AddContactAsync(new ContactModel());
             Assert.IsInstanceOf<CreatedNegotiatedContentResult<Contact>>(actionResult);
+        }
+
+        [Test]
+        public async Task EditContactAsync_missing_contactid()
+        {
+            var actionResult = await _contactsController.EditContactAsync(Guid.Empty, new ContactModel());
+            Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
+        }
+        
+        [Test]
+        public async Task EditContactAsync_null_contact()
+        {
+            var actionResult = await _contactsController.EditContactAsync(Guid.NewGuid(), null);
+            Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
+        }
+
+        [Test]
+        public async Task EditContactAsync_correct_contactid()
+        {
+            var actionResult = await _contactsController.EditContactAsync(Guid.NewGuid(), new ContactModel());
+            Assert.IsInstanceOf<ResponseMessageResult>(actionResult);
         }
     }
 }

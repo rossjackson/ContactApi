@@ -18,19 +18,48 @@ namespace ContactApi.Data.Services
             return _context.Contacts;
         }
 
-        public async Task<bool> AddOrUpdateContactAsync(Contact newContact)
+        public async Task<bool> AddContactAsync(Contact newContact)
         {
-            if (DuplicateEmail(newContact.EmailAddress, _context.Contacts.ToList()))
+            if (DuplicateEmail(newContact.ContactId, newContact.EmailAddress, _context.Contacts.ToList()))
                 throw new ContactDataUpdateException("Duplicate email address.");
 
-            _context.Contacts.AddOrUpdate(newContact);
-            return await _context.SaveChangesAsync() != 0;
+            _context.Contacts.Add(newContact);
+            return await _context.SaveChangesAsync() == 1;
         }
 
-        public bool DuplicateEmail(string emailAddress, List<Contact> contacts)
+        public async Task<bool> EditContactAsync(Contact updatedContact)
         {
-            return contacts.Any(c => string.Equals(c.EmailAddress.Trim(), emailAddress.Trim(),
-                StringComparison.InvariantCultureIgnoreCase));
+            var contacts = _context.Contacts.ToList();
+
+            var originalContact = GetContact(contacts, updatedContact);
+
+            if(originalContact == null)
+                throw new ContactDataUpdateException("Contact not found.");
+
+            if (DuplicateEmail(updatedContact.ContactId, updatedContact.EmailAddress, contacts))
+                throw new ContactDataUpdateException("Duplicate email address.");
+
+            MaintainContactStatusOnEdit(originalContact, updatedContact);
+
+            _context.Contacts.AddOrUpdate(updatedContact);
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public Contact GetContact(List<Contact> contacts, Contact contactToCheck)
+        {
+            return contacts.FirstOrDefault(c => c.ContactId == contactToCheck.ContactId);
+
+        }
+
+        public bool DuplicateEmail(Guid contactIdToCheck, string emailAddressToCheck, List<Contact> contacts)
+        {
+            return contacts.Any(c => c.ContactId != contactIdToCheck && string.Equals(c.EmailAddress.Trim(),
+                                         emailAddressToCheck.Trim(), StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public void MaintainContactStatusOnEdit(Contact originalContact, Contact updatedContact)
+        {
+            updatedContact.Status = originalContact.Status;
         }
     }
 }
