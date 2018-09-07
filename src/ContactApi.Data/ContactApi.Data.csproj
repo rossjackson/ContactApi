@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="ContactApiDb.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Exceptions\ContactNotFoundException.cs" />
+    <Compile Include="Exceptions\DuplicateEmailException.cs" />
     <Compile Include="Exceptions\ContactDataUpdateException.cs" />
     <Compile Include="IContactDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

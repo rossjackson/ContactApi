@@ -21,7 +21,7 @@ namespace ContactApi.Data.Services
         public async Task<bool> AddContactAsync(Contact newContact)
         {
             if (DuplicateEmail(newContact.ContactId, newContact.EmailAddress, _context.Contacts.ToList()))
-                throw new ContactDataUpdateException("Duplicate email address.");
+                throw new DuplicateEmailException();
 
             _context.Contacts.Add(newContact);
             return await _context.SaveChangesAsync() == 1;
@@ -33,11 +33,11 @@ namespace ContactApi.Data.Services
 
             var originalContact = GetContact(contacts, updatedContact.ContactId);
 
-            if(originalContact == null)
-                throw new ContactDataUpdateException("Contact not found.");
+            if (originalContact == null)
+                throw new ContactNotFoundException();
 
             if (DuplicateEmail(updatedContact.ContactId, updatedContact.EmailAddress, contacts))
-                throw new ContactDataUpdateException("Duplicate email address.");
+                throw new DuplicateEmailException();
 
             MaintainContactStatusOnEdit(originalContact, updatedContact);
 
@@ -52,7 +52,7 @@ namespace ContactApi.Data.Services
             var contactToDelete = GetContact(contacts, contactId);
 
             if (contactToDelete == null)
-                throw new ContactDataUpdateException("Contact not found.");
+                throw new ContactNotFoundException();
 
             _context.Contacts.Remove(contactToDelete);
             return await _context.SaveChangesAsync() == 1;
@@ -65,7 +65,7 @@ namespace ContactApi.Data.Services
             var contactToUpdate = GetContact(contacts, contactId);
 
             if(contactToUpdate == null)
-                throw new ContactDataUpdateException("Contact not found.");
+                throw new ContactNotFoundException();
 
             contactToUpdate.Status = string.Equals(status, "Active", StringComparison.OrdinalIgnoreCase)
                 ? "Active"
