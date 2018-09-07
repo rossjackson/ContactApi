@@ -59,6 +59,16 @@ namespace ContactApi.Web.Api.Controllers.V1
             return ResponseMessage(new HttpResponseMessage(HttpStatusCode.NoContent));
         }
 
+        [Route("delete")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> DeleteContactAsync([FromUri] Guid contactId)
+        {
+            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
+
+            await _contactService.DeleteContactAsync(contactId);
+            return Ok();
+        }
+
         private Contact MapContactModelToContactEntity(ContactModel contactModel, Guid contactId = default(Guid),
             string status = default(string))
         {

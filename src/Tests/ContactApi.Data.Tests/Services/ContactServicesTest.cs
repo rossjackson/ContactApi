@@ -81,19 +81,40 @@ namespace ContactApi.Data.Tests.Services
             Assert.AreNotEqual(originalContact, updatedContact);
         }
 
+        [Test]
+        public void DeleteContactAsync()
+        {
+            var contacts = MockHelper.ContactTestCollection.ToList();
+            var contactIdToDelete = MockHelper.ContactIdToUpdate;
+
+            var originalContactsCount = contacts.Count;
+
+            var contactServiceMock = new Mock<IContactService>();
+            contactServiceMock.Setup(c => c.DeleteContactAsync(It.IsAny<Guid>())).Callback<Guid>(c =>
+            {
+                var contactToRemove = contacts.FirstOrDefault(thisContact => thisContact.ContactId == c);
+                contacts.Remove(contactToRemove);
+            });
+
+            contactServiceMock.Object.DeleteContactAsync(contactIdToDelete);
+
+            var actualContactsCount = contacts.Count;
+
+            var deletedContact = contacts.FirstOrDefault(c => c.ContactId == contactIdToDelete);
+
+            Assert.IsTrue(originalContactsCount - 1 == actualContactsCount);
+            Assert.Null(deletedContact);
+        }
+
         [TestCase("{6D3741D2-9E21-42AC-AC7F-B471C77FDB1E}", ExpectedResult = null, TestName = "GetContact_unknown_contact")]
         [TestCase("{78B15191-98D8-4250-9B5A-5DD52BCE71F2}", ExpectedResult = "batman@gmail.com", TestName = "GetContact_known_contact")]
         public string GetContact(string strContactId)
         {
             var contacts = MockHelper.ContactTestCollection.ToList();
-            var contactToUpdateData = new Contact
-            {
-                ContactId = new Guid(strContactId)
-            };
 
             var contactServiceMock = new Mock<ContactService>();
 
-            var actualContact = contactServiceMock.Object.GetContact(contacts, contactToUpdateData);
+            var actualContact = contactServiceMock.Object.GetContact(contacts, new Guid(strContactId));
             return actualContact?.EmailAddress;
         }
         

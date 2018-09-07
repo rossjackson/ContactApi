@@ -12,5 +12,6 @@ namespace ContactApi.Data.Services
         IEnumerable<Contact> GetAll();
         Task<bool> AddContactAsync(Contact newContact);
         Task<bool> EditContactAsync(Contact updatedContact);
+        Task<bool> DeleteContactAsync(Guid contactId);
     }
 }

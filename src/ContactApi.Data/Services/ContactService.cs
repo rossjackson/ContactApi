@@ -31,7 +31,7 @@ namespace ContactApi.Data.Services
         {
             var contacts = _context.Contacts.ToList();
 
-            var originalContact = GetContact(contacts, updatedContact);
+            var originalContact = GetContact(contacts, updatedContact.ContactId);
 
             if(originalContact == null)
                 throw new ContactDataUpdateException("Contact not found.");
@@ -45,9 +45,22 @@ namespace ContactApi.Data.Services
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public Contact GetContact(List<Contact> contacts, Contact contactToCheck)
+        public async Task<bool> DeleteContactAsync(Guid contactId)
         {
-            return contacts.FirstOrDefault(c => c.ContactId == contactToCheck.ContactId);
+            var contacts = _context.Contacts.ToList();
+
+            var contactToDelete = GetContact(contacts, contactId);
+
+            if (contactToDelete == null)
+                throw new ContactDataUpdateException("Contact not found.");
+
+            _context.Contacts.Remove(contactToDelete);
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public Contact GetContact(List<Contact> contacts, Guid contactIdToCheck)
+        {
+            return contacts.FirstOrDefault(c => c.ContactId == contactIdToCheck);
 
         }
 

@@ -48,22 +48,41 @@ namespace ContactApi.Web.Api.Tests.Controllers.V1
         [Test]
         public async Task EditContactAsync_missing_contactid()
         {
-            var actionResult = await _contactsController.EditContactAsync(Guid.Empty, new ContactModel());
+            var contactIdToEdit = Guid.Empty;
+            var actionResult = await _contactsController.EditContactAsync(contactIdToEdit, new ContactModel());
             Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
         }
         
         [Test]
         public async Task EditContactAsync_null_contact()
         {
-            var actionResult = await _contactsController.EditContactAsync(Guid.NewGuid(), null);
+            var contactIdToEdit = Guid.NewGuid();
+            var actionResult = await _contactsController.EditContactAsync(contactIdToEdit, null);
             Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
         }
 
         [Test]
         public async Task EditContactAsync_correct_contactid()
         {
-            var actionResult = await _contactsController.EditContactAsync(Guid.NewGuid(), new ContactModel());
+            var contactIdToEdit = Guid.NewGuid();
+            var actionResult = await _contactsController.EditContactAsync(contactIdToEdit, new ContactModel());
             Assert.IsInstanceOf<ResponseMessageResult>(actionResult);
+        }
+
+        [Test]
+        public async Task DeleteContactAsync_missing_contactid()
+        {
+            var contactIdToDelete = Guid.Empty;
+            var actionResult = await _contactsController.DeleteContactAsync(contactIdToDelete);
+            Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
+        }
+
+        [Test]
+        public async Task DeleteContactAsync_correct_contactid()
+        {
+            var contactIdToDelete = Guid.NewGuid();
+            var actionResult = await _contactsController.DeleteContactAsync(contactIdToDelete);
+            Assert.IsInstanceOf<OkResult>(actionResult);
         }
     }
 }
