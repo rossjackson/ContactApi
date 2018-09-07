@@ -58,6 +58,25 @@ namespace ContactApi.Data.Services
             return await _context.SaveChangesAsync() == 1;
         }
 
+        public async Task<Contact> UpdateStatusAsync(Guid contactId, string status)
+        {
+            var contacts = _context.Contacts.ToList();
+
+            var contactToUpdate = GetContact(contacts, contactId);
+
+            if(contactToUpdate == null)
+                throw new ContactDataUpdateException("Contact not found.");
+
+            contactToUpdate.Status = string.Equals(status, "Active", StringComparison.OrdinalIgnoreCase)
+                ? "Active"
+                : "Inactive";
+
+            _context.Contacts.AddOrUpdate(contactToUpdate);
+            await _context.SaveChangesAsync();
+
+            return contactToUpdate;
+        }
+
         public Contact GetContact(List<Contact> contacts, Guid contactIdToCheck)
         {
             return contacts.FirstOrDefault(c => c.ContactId == contactIdToCheck);

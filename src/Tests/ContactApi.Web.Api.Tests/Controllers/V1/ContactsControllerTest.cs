@@ -84,5 +84,23 @@ namespace ContactApi.Web.Api.Tests.Controllers.V1
             var actionResult = await _contactsController.DeleteContactAsync(contactIdToDelete);
             Assert.IsInstanceOf<OkResult>(actionResult);
         }
+
+        [Test]
+        public async Task UpdateStatusAsync_missing_contactid()
+        {
+            var contactIdToUpdate = Guid.Empty;
+            var status = "Active";
+            var actionResult = await _contactsController.UpdateStatusAsync(contactIdToUpdate, status);
+            Assert.IsInstanceOf<BadRequestErrorMessageResult>(actionResult);
+        }
+
+        [Test]
+        public async Task UpdateStatusAsync_correct_contactid()
+        {
+            var contactIdToUpdate = Guid.NewGuid();
+            var status = "Active";
+            var actionResult = await _contactsController.UpdateStatusAsync(contactIdToUpdate, status);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<Contact>>(actionResult);
+        }
     }
 }

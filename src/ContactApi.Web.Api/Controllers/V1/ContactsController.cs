@@ -69,6 +69,16 @@ namespace ContactApi.Web.Api.Controllers.V1
             return Ok();
         }
 
+        [Route("updatestatus")]
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateStatusAsync([FromUri] Guid contactId, [FromUri] string status)
+        {
+            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
+
+            var contact = await _contactService.UpdateStatusAsync(contactId, status);
+            return Ok(contact);
+        }
+
         private Contact MapContactModelToContactEntity(ContactModel contactModel, Guid contactId = default(Guid),
             string status = default(string))
         {

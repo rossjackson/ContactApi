@@ -106,6 +106,32 @@ namespace ContactApi.Data.Tests.Services
             Assert.Null(deletedContact);
         }
 
+        [TestCase("Active", "{D7F34E7A-9AEC-474D-906B-626357AAA9A0}", ExpectedResult = "Active", TestName = "UpdateStatus_Active")]
+        [TestCase("Inactive", "{D7F34E7A-9AEC-474D-906B-626357AAA9A0}", ExpectedResult = "Inactive", TestName = "UpdateStatus_Inactive")]
+        [TestCase("OtherWords", "{D7F34E7A-9AEC-474D-906B-626357AAA9A0}", ExpectedResult = "Inactive", TestName = "UpdateStatus_OtherWords")]
+        [TestCase(null, "{D7F34E7A-9AEC-474D-906B-626357AAA9A0}", ExpectedResult = "Inactive", TestName = "UpdateStatus_Null")]
+        public string UpdateStatusAsync(string toUpdateStatus, string contactIdToUpdateString)
+        {
+            var contacts = MockHelper.ContactTestCollection.ToList();
+            var contactIdToUpdate = new Guid(contactIdToUpdateString);
+
+            var originalContactsCount = contacts.Count;
+
+            var contactServiceMock = new Mock<IContactService>();
+            contactServiceMock.Setup(c => c.UpdateStatusAsync(It.IsAny<Guid>(), It.IsAny<string>())).Callback<Guid, string>((contactId, status) =>
+            {
+                var contactToUpdateStatus = contacts.FirstOrDefault(c => c.ContactId == contactId);
+                if (contactToUpdateStatus == null) return;
+                contactToUpdateStatus.Status = string.Equals(status, "Active", StringComparison.OrdinalIgnoreCase) ? "Active" : "Inactive";
+            });
+
+            contactServiceMock.Object.UpdateStatusAsync(contactIdToUpdate, toUpdateStatus);
+        
+            Assert.IsTrue(contacts.Count == originalContactsCount);
+
+            return contacts.FirstOrDefault(c => c.ContactId == contactIdToUpdate)?.Status;
+        }
+
         [TestCase("{6D3741D2-9E21-42AC-AC7F-B471C77FDB1E}", ExpectedResult = null, TestName = "GetContact_unknown_contact")]
         [TestCase("{78B15191-98D8-4250-9B5A-5DD52BCE71F2}", ExpectedResult = "batman@gmail.com", TestName = "GetContact_known_contact")]
         public string GetContact(string strContactId)
