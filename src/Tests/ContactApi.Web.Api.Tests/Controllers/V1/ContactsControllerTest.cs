@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Web.Http.Controllers;
 using System.Web.Http.Results;
 using System.Web.ModelBinding;
@@ -36,10 +37,10 @@ namespace ContactApi.Web.Api.Tests.Controllers.V1
         }
 
         [Test]
-        public void AddContact()
+        public async Task AddContactAsync()
         {
-            var actionResult = _contactsController.AddContact(new ContactModel());
-            Assert.IsInstanceOf<OkResult>(actionResult.Result);
+            var actionResult = await _contactsController.AddContact(new ContactModel());
+            Assert.IsInstanceOf<CreatedNegotiatedContentResult<Contact>>(actionResult);
         }
     }
 }

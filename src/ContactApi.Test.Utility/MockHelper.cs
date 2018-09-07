@@ -24,6 +24,7 @@ namespace ContactApi.Test.Utility
         }
 
         public static string DuplicateEmail = "lex.luther@gmail.com";
+        public static Guid ContactIdToUpdate = new Guid("{58117087-6E6F-4BA6-B115-A04DE77C4E7F}");
 
         public static IQueryable<Contact> ContactTestCollection => new List<Contact>
         {
@@ -47,7 +48,7 @@ namespace ContactApi.Test.Utility
             },
             new Contact
             {
-                ContactId = new Guid("{58117087-6E6F-4BA6-B115-A04DE77C4E7F}"),
+                ContactId = ContactIdToUpdate,
                 FirstName = "Tim",
                 LastName = "Drake",
                 EmailAddress = "tim.drake@gmail.com",

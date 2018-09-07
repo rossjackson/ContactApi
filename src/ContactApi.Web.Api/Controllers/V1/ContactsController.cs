@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 using ContactApi.Data.Entities;
 using ContactApi.Data.Services;
 using ContactApi.Web.Api.Models.V1;
@@ -38,7 +39,7 @@ namespace ContactApi.Web.Api.Controllers.V1
             var contact = MapContactModelToContactEntity(contactModel);
             await _contactService.AddOrUpdateContactAsync(contact);
 
-            return Ok();
+            return Created(Request?.RequestUri.ToString() ?? "/", contact);
         }
 
         private Contact MapContactModelToContactEntity(ContactModel contactModel)

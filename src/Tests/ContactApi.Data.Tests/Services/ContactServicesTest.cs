@@ -32,7 +32,7 @@ namespace ContactApi.Data.Tests.Services
         }
 
         [Test]
-        public void AddContact_insert_new_contact()
+        public void AddOrUpdateContactAsync_insert_contact()
         {
             var contacts = MockHelper.ContactTestCollection.ToList();
             var originalContactsCount = contacts.Count;
@@ -50,7 +50,40 @@ namespace ContactApi.Data.Tests.Services
         }
 
         [Test]
-        public void AddContact_duplicate_email()
+        public void AddOrUpdateContactAsync_update_contact()
+        {
+            var contacts = MockHelper.ContactTestCollection.ToList();
+            var originalContactsCount = contacts.Count;
+            var originalContactToUpdate = contacts.FirstOrDefault(c => c.ContactId == MockHelper.ContactIdToUpdate);
+
+            var contactToUpdateData = new Contact
+            {
+                ContactId = MockHelper.ContactIdToUpdate,
+                FirstName = "Peter",
+                LastName = "Parker",
+                EmailAddress = "peter.parker@gmail.com"
+            };
+
+            var contactServiceMock = new Mock<IContactService>();
+            contactServiceMock.Setup(c => c.AddOrUpdateContactAsync(It.IsAny<Contact>()))
+                .Callback<Contact>(c =>
+                {
+                    var contactToAddOrUpdate = contacts.FirstOrDefault(contact => contact.ContactId == c.ContactId);
+                    var contactToUpdateIndex = contacts.IndexOf(contactToAddOrUpdate);
+                    contacts[contactToUpdateIndex] = c;
+                });
+
+            contactServiceMock.Object.AddOrUpdateContactAsync(contactToUpdateData);
+            var updatedContactsCount = contacts.Count;
+            var updatedContact = contacts.FirstOrDefault(c => c.ContactId == contactToUpdateData.ContactId);
+
+            Assert.That(originalContactsCount == updatedContactsCount);
+            Assert.AreNotEqual(originalContactToUpdate, updatedContact);
+            Assert.AreEqual(contactToUpdateData, updatedContact);
+        }
+
+        [Test]
+        public void AddOrUpdateContactAsync_duplicate_email()
         {
             var contactServiceMock = new Mock<ContactService>();
             var contacts = MockHelper.ContactTestCollection.ToList();
