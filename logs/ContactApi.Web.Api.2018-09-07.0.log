@@ -1,0 +1,115 @@
+2018-09-07 16:01:00,184 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:01:10,660 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:01:17,069 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:02:12,208 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:02:20,428 ERROR [8] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:02:33,106 ERROR [7] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:03:31,032 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:03:37,772 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:03:42,525 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:04:22,208 ERROR [8] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:04:37,709 ERROR [7] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:04:58,468 ERROR [25] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 16:06:40,764 ERROR [6] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.GetControllerName(IHttpRouteData routeData) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 102
+   at ContactApi.Web.Common.NamespaceHttpControllerSelector.SelectController(HttpRequestMessage request) in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Common\NamespaceHttpControllerSelector.cs:line 35
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
+2018-09-07 17:12:06,927 ERROR [10] ContactApi.Web.Common.ErrorHandling.SimpleExceptionLogger - Unhandled exception
+ContactApi.Data.Exceptions.ContactNotFoundException: Contact not found.
+   at ContactApi.Data.Services.ContactService.<EditContactAsync>d__3.MoveNext() in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Data\Services\ContactService.cs:line 39
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ContactApi.Web.Api.Controllers.V1.ContactsController.<EditContactAsync>d__4.MoveNext() in C:\Users\rosss\Source\Repos\ContactApi\src\ContactApi.Web.Api\Controllers\V1\ContactsController.cs:line 57
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__1`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__15.MoveNext()
