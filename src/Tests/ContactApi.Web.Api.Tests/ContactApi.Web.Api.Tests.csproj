@@ -101,13 +101,13 @@
       <Project>{c7230648-250a-4632-9189-739c9eeafaaf}</Project>
       <Name>ContactApi.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj">
-      <Project>{4860F813-747E-4B87-9EDF-908EF32DC48A}</Project>
-      <Name>ContactApi.Test.Utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\ContactApi.Web.Api\ContactApi.Web.Api.csproj">
       <Project>{508b16a5-7e81-46e8-98b5-d58b26905271}</Project>
       <Name>ContactApi.Web.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj">
+      <Project>{4860f813-747e-4b87-9edf-908ef32dc48a}</Project>
+      <Name>ContactApi.Test.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

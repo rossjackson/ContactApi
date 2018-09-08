@@ -80,7 +80,7 @@
       <Project>{c7230648-250a-4632-9189-739c9eeafaaf}</Project>
       <Name>ContactApi.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj">
+    <ProjectReference Include="..\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj">
       <Project>{4860f813-747e-4b87-9edf-908ef32dc48a}</Project>
       <Name>ContactApi.Test.Utility</Name>
     </ProjectReference>

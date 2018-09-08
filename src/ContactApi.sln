@@ -18,11 +18,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Data.Tests", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Web.Api.Tests", "Tests\ContactApi.Web.Api.Tests\ContactApi.Web.Api.Tests.csproj", "{002C5E09-D15B-4924-8B98-205D6E85B706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Web.Common.Tests", "Tests\ContactApi.Web.Common.Tests\ContactApi.Web.Common.Tests.csproj", "{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Web.Api", "ContactApi.Web.Api\ContactApi.Web.Api.csproj", "{508B16A5-7E81-46E8-98B5-D58B26905271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Test.Utility", "ContactApi.Test.Utility\ContactApi.Test.Utility.csproj", "{4860F813-747E-4B87-9EDF-908EF32DC48A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi.Test.Utility", "Tests\ContactApi.Test.Utility\ContactApi.Test.Utility.csproj", "{4860F813-747E-4B87-9EDF-908EF32DC48A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +44,6 @@ Global
 		{002C5E09-D15B-4924-8B98-205D6E85B706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{002C5E09-D15B-4924-8B98-205D6E85B706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{002C5E09-D15B-4924-8B98-205D6E85B706}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{508B16A5-7E81-46E8-98B5-D58B26905271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{508B16A5-7E81-46E8-98B5-D58B26905271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508B16A5-7E81-46E8-98B5-D58B26905271}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,7 +59,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{130C7893-300C-46E2-A662-36F98B403EA4} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 		{002C5E09-D15B-4924-8B98-205D6E85B706} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
-		{E7A2F791-F143-4298-9C6A-6B50C5E5F4AD} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 		{4860F813-747E-4B87-9EDF-908EF32DC48A} = {26B65CD6-1F3D-4CD0-9F66-7D39DF13884C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
