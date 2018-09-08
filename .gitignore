@@ -8,6 +8,4 @@
 /src/**/obj/Release
 /src/**/bin
 /src/ContactApi.Web.Api/ConnectionString.config
-/logs/*.log
-
 /src/ContactApi.Web.Api/AppSettings.config
