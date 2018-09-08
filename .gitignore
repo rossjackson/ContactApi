@@ -10,3 +10,4 @@
 /src/ContactApi.Web.Api/ConnectionString.config
 /logs
 
+/src/ContactApi.Web.Api/AppSettings.config

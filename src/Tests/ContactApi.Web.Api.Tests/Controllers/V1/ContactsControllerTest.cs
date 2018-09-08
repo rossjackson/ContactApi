@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http.Controllers;
 using System.Web.Http.Results;
-using System.Web.ModelBinding;
 using ContactApi.Data.Entities;
 using ContactApi.Data.Services;
-using ContactApi.Test.Utility;
 using ContactApi.Web.Api.Controllers.V1;
 using ContactApi.Web.Api.Models.V1;
 using Moq;

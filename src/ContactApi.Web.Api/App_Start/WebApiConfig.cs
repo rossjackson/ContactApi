@@ -28,6 +28,8 @@ namespace ContactApi.Web.Api
                 routeTemplate: "{*uri}",
                 defaults: new { controller = "Default", uri = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new TokenValidationHandler());
         }
     }
 }
