@@ -206,7 +206,7 @@ Exposed Apis:
   - Query string
     - expiresinminutes={int}
 
-To get the jwtToken, hit the `api/v2/jwt/generatetoken` first to generate the token and add it as a authorization headers.
+To get the jwtToken, hit the `api/v2/jwt/generatetoken` first to generate the token and add it as an authorization headers.
 
 A sample complete URL:
 `http://localhost:50602/api/v2/jwt/generatetoken?expiresinminutes=60`
