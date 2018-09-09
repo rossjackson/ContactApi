@@ -19,17 +19,16 @@ namespace ContactApi.Web.Api
             config.MapHttpAttributeRoutes(constraintsResolver);
 
             config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
+
             config.Services.Add(typeof(IExceptionLogger),
                 new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
             config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
+            config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(
-                name: "ResourceNotFound",
-                routeTemplate: "{*uri}",
-                defaults: new { controller = "Default", uri = RouteParameter.Optional }
+                name: "CatchAllUrlTo404",
+                routeTemplate: "{*uri}"
             );
-
-            config.MessageHandlers.Add(new TokenValidationHandler());
         }
     }
 }

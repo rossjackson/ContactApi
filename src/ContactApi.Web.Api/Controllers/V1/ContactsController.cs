@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 namespace ContactApi.Web.Api.Controllers.V1
 {
     [ApiVersion1RoutePrefix("contacts")]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize]
     public class ContactsController : ApiController
     {
         private readonly IContactService _contactService;

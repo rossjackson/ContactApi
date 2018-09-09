@@ -1,9 +1,9 @@
 ﻿using System.Web.Http;
 using ContactApi.Web.Common.Security;
 
-namespace ContactApi.Web.Api.Controllers.V12
+namespace ContactApi.Web.Api.Controllers.V2
 {
-    [RoutePrefix("api/{apiVersion:apiVersionConstraint(v12)}/jwt")]
+    [RoutePrefix("api/{apiVersion:apiVersionConstraint(v2)}/jwt")]
     [AllowAnonymous]
     public class JwtController : ApiController
     {

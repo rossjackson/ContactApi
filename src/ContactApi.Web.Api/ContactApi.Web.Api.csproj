@@ -137,7 +137,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\V12\JwtController.cs" />
+    <Compile Include="Controllers\V2\JwtController.cs" />
     <Compile Include="Controllers\V1\ContactsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
