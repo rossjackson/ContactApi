@@ -7,17 +7,23 @@ The main folders are lib, logs, and src.
 
 ### Folder Structure
 **lib**: This is where I set Nuget to store all the third party binaries I used for ContactApi. It includes, but is not limited to log4net, Moq, and Ninject.
+
 **logs**: This is where I set log4net to store all the exception that happen within the ContactApi solution.
+
 **src**: This is where the ContactApi.sln and all the projects related to it reside.
 
 ### Projects
 **ContactApi.Data**: Contains ContactApi's model plain old CLR objects, ContactApiDb context, and the ContactService.  I used Entity Framework for ORM.
+
 **ContactApi.Web.Api**: This is the main REST service.  This is hosted by IIS.  This project contains all the Web API controllers, models, and ninject configurations.
+
 **ContactApi.Web.Common**: Contains functionality common to the Web.Api and service applications.
 
 ### Test Projects: 
 **Tests/ContactApi.Data.Tests**: Unit tests for the ContactService.
+
 **Tests/ContactApi.Test.Utility**: MockHelper is the only class found here. This is a helper class for unit testing.
+
 **Tests/ContactApi.Web.Api.Tests**: Unit tests for the controllers and models.  I tested the different data annotations for the models.  I want to showcase how you can test the ModelState (data annotations).
 
 ### References
