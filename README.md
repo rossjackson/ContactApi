@@ -1,5 +1,5 @@
 # ContactApi
-ContactApi is a sample of a REST service that showcases a production quality application.  It includes Entity Framework as ORM, logging, versioning, routing, Ninject DI, and unit testing.
+ContactApi is a sample of a REST service that showcases a production quality application.  It includes Entity Framework as ORM, logging, versioning, routing, Ninject DI, and unit testing.  This API performs a secured basic CRUD operations.  I exposed a status update as well to change a contact's status from active to inactive and vice versa.
 
 The main folders are lib, logs, and src.
 
