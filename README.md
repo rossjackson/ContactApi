@@ -167,7 +167,50 @@ and the `ConnectionString.config` will look something like:
 </connectionStrings>
 ```
 
-You can create your own database with the script above, and modify this connection string with correct data. 
+You can create your own database with the script above, and modify this connection string with correct data.
+
+Exposed Apis:
+- api/v1/contacts/list
+  - HTTPGET
+  - Request headers
+    - authorization: Bearer <jwtToken>
+- api/v1/contacts/add
+  - HTTPPOST
+  - Request body
+  	- { contactmodel }
+  - Request headers
+    - authorization: Bearer <jwtToken>
+- api/v1/contacts/edit
+  - HTTPPUT
+  - Query string
+  	- contactid={guidId}
+  - Request body
+  	- { contactmodel }
+  - Request headers
+    - authorization: Bearer <jwtToken>
+- api/v1/contacts/delete
+  - HTTPDELETE
+  - Query string
+  	- contactid={guidId}
+  - Request headers
+    - authorization: Bearer <jwtToken>
+- api/v1/contacts/updatestatus
+  - HTTPPUT
+  - Query string
+  	- contactid={guidId}
+  	- status={active|inactive}
+  - Request headers
+    - authorization: Bearer <jwtToken>
+- api/v2/jwt/generatetoken
+  - HTTPGET
+  - Query string
+    - expiresinminutes={int}
+
+To get the jwtToken, hit the `api/v2/jwt/generatetoken` first to generate the token and add it as a authorization headers.
+
+A sample complete URL:
+`http://localhost:50602/api/v2/jwt/generatetoken?expiresinminutes=60`
+
 
 
 
