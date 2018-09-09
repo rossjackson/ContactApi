@@ -173,13 +173,13 @@ Exposed Apis:
 - api/v1/contacts/list
   - HTTPGET
   - Request headers
-    - authorization: Bearer <jwtToken>
+    - authorization: Bearer jwtToken
 - api/v1/contacts/add
   - HTTPPOST
   - Request body
   	- { contactmodel }
   - Request headers
-    - authorization: Bearer <jwtToken>
+    - authorization: Bearer jwtToken
 - api/v1/contacts/edit
   - HTTPPUT
   - Query string
@@ -187,20 +187,20 @@ Exposed Apis:
   - Request body
   	- { contactmodel }
   - Request headers
-    - authorization: Bearer <jwtToken>
+    - authorization: Bearer jwtToken
 - api/v1/contacts/delete
   - HTTPDELETE
   - Query string
   	- contactid={guidId}
   - Request headers
-    - authorization: Bearer <jwtToken>
+    - authorization: Bearer jwtToken
 - api/v1/contacts/updatestatus
   - HTTPPUT
   - Query string
   	- contactid={guidId}
   	- status={active|inactive}
   - Request headers
-    - authorization: Bearer <jwtToken>
+    - authorization: Bearer jwtToken
 - api/v2/jwt/generatetoken
   - HTTPGET
   - Query string
