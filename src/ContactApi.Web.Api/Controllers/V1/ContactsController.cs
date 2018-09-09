@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using System.Web.Http.Results;
 using ContactApi.Data.Entities;
 using ContactApi.Data.Services;
@@ -36,8 +37,8 @@ namespace ContactApi.Web.Api.Controllers.V1
         [HttpPost]
         public async Task<IHttpActionResult> AddContactAsync([FromBody]ContactModel contactModel)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            if (!ModelStateValid(ModelState, out var badRequest)) return badRequest;
+            
             var contact = MapContactModelToContactEntity(contactModel, status: "Inactive");
             await _contactService.AddContactAsync(contact);
 
@@ -48,11 +49,7 @@ namespace ContactApi.Web.Api.Controllers.V1
         [HttpPut]
         public async Task<IHttpActionResult> EditContactAsync([FromUri]Guid contactId, [FromBody]ContactModel contactModel)
         {
-            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
-
-            if (contactModel == null) return BadRequest("Please use delete to remove the contact.");
-
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!EditContactValid(contactId, contactModel, ModelState, out var badRequest)) return badRequest;
 
             var contact = MapContactModelToContactEntity(contactModel, contactId);
             await _contactService.EditContactAsync(contact);
@@ -64,7 +61,7 @@ namespace ContactApi.Web.Api.Controllers.V1
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteContactAsync([FromUri] Guid contactId)
         {
-            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
+            if (!ContactIdValid(contactId, out var badRequest)) return badRequest;
 
             await _contactService.DeleteContactAsync(contactId);
             return Ok();
@@ -74,7 +71,7 @@ namespace ContactApi.Web.Api.Controllers.V1
         [HttpPut]
         public async Task<IHttpActionResult> UpdateStatusAsync([FromUri] Guid contactId, [FromUri] string status)
         {
-            if (contactId == Guid.Empty) return BadRequest("ContactId is required.");
+            if (!ContactIdValid(contactId, out var badRequest)) return badRequest;
 
             var contact = await _contactService.UpdateStatusAsync(contactId, status);
             return Ok(contact);
@@ -92,6 +89,34 @@ namespace ContactApi.Web.Api.Controllers.V1
                 PhoneNumber = contactModel.PhoneNumber,
                 Status = status
             };
+        }
+
+        private bool EditContactValid(Guid contactId, ContactModel contactModel, ModelStateDictionary modelState, out IHttpActionResult badRequest)
+        {
+            if (!ContactIdValid(contactId, out badRequest)) return false;
+            if (!ContactModelValid(contactModel, out badRequest)) return false;
+            if (!ModelStateValid(modelState, out badRequest)) return false;
+
+            badRequest = null;
+            return true;
+        }
+
+        private bool ModelStateValid(ModelStateDictionary modelState, out IHttpActionResult badRequest)
+        {
+            badRequest = modelState.IsValid ? null : BadRequest(modelState);
+            return badRequest == null;
+        }
+
+        private bool ContactModelValid(ContactModel contactModel, out IHttpActionResult badRequest)
+        {
+            badRequest = contactModel == null ? BadRequest("Please use delete to remove the contact.") : null;
+            return badRequest == null;
+        }
+
+        private bool ContactIdValid(Guid contactId, out IHttpActionResult badRequest)
+        {
+            badRequest = contactId == Guid.Empty ? BadRequest("ContactId is required.") : null;
+            return badRequest == null;
         }
     }
 }

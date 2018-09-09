@@ -9,3 +9,4 @@
 /src/**/bin
 /src/ContactApi.Web.Api/ConnectionString.config
 /src/ContactApi.Web.Api/AppSettings.config
+/src/ContactApi.Web.Api/Properties/PublishProfiles
