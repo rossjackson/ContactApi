@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactApi.Data.Exceptions
 {
-    public class ContactNotFoundException : Exception
+    public class ContactNotFoundException : ContactDataUpdateException
     {
         public ContactNotFoundException() : base("Contact not found.")
         {

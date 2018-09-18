@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactApi.Data.Exceptions
 {
-    public class DuplicateEmailException : Exception
+    public class DuplicateEmailException : ContactDataUpdateException
     {
         public DuplicateEmailException() : base("Duplicate email addresss.")
         {
